@@ -1,0 +1,427 @@
+/* | ---------------------------------- | Style Sheet - Created By Harry Baird | --------------------- | */
+
+
+/* Last Updated: 30/12/2021                                                                         */
+
+
+/* ----------------------------------- Root --------------------- */
+
+:root {
+    --primary: #dd6b48;
+    --secondary: #c56244;
+    --third: #b6583b;
+}
+
+
+/* ----------------------------------- Selection --------------------- */
+
+::selection {
+    background-color: black;
+    color: white;
+}
+
+
+/* ----------------------------------- Scrollbar --------------------- */
+
+body::-webkit-scrollbar {
+    width: 0.5em;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: rgb(212, 212, 212);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #212529;
+    border-radius: 5px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background-color: #000000;
+    border-radius: 5px;
+}
+
+main {
+    content-visibility: auto;
+}
+
+
+/* ----------------------------------- Anchor --------------------- */
+
+.link {
+    outline: none;
+    text-decoration: none;
+    padding: 2px 1px 0;
+}
+
+.link:link {
+    color: var(--secondary);
+}
+
+.link:visited {
+    color: var(--third);
+}
+
+.link:focus {
+    border-bottom: 1px solid;
+    background: #dd6b4848;
+}
+
+.link:hover {
+    border-bottom: 1px solid;
+    background: #dd6b4848;
+}
+
+.link:active {
+    background: var(--secondary);
+    color: #dd6b4848;
+}
+
+
+/* ----------------------------------- Body --------------------- */
+
+body {
+    background-color: #0c0c0c !important;
+    color: rgb(221, 221, 221);
+    font-family: Segoe UI;
+    width: 100%;
+    overflow-x: hidden !important;
+}
+
+.cover {
+    height: 100vh !important;
+    z-index: -50;
+}
+
+.textEffect {
+    /* filter: drop-shadow(5px 5px 0px black); */
+}
+
+.mainTitlePortfolio {
+    top: -10px;
+    left: 15px;
+    z-index: 200 !important;
+    position: absolute;
+    font-style: italic;
+    font-weight: 100;
+    width: 100%;
+}
+
+@media only screen and (max-width: 1075px) {
+    .mobileBehind {
+        z-index: -30 !important;
+    }
+}
+
+small {
+    color: rgba(236, 236, 236, 0.479);
+}
+
+.mainTitle {
+    /*  leverage cascade for cross-browser gradients  */
+    background: radial-gradient( rgb(236, 236, 236), rgb(255, 184, 51)) fixed;
+    background: conic-gradient( rgb(218, 218, 218), rgb(255, 184, 51), rgb(216, 216, 216)) fixed;
+    /* stroke: radial-gradient( rgb(255, 160, 51), hsl(200 100% 60%)); */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    font-size: 11rem;
+    font-family: 'Expletus Sans', cursive;
+    transform: scale(1) rotate(0deg) translate(0px, 0px) skew(-20deg, 0deg);
+    font-weight: 400;
+}
+
+.cover2 {
+    object-fit: cover;
+    /* background-position: center; */
+    height: 100% !important;
+    /* margin-left: auto;
+    margin-right: auto; */
+    /* min-width: 100%; */
+    /* min-height: 100vh;
+    width: 100%; */
+    width: 100%;
+    z-index: -50;
+    position: absolute !important;
+    overflow: hidden !important;
+    /* visibility: hidden; */
+}
+
+.cloud {
+    z-index: 9 !important;
+    position: absolute;
+    overflow: hidden !important;
+    visibility: visible;
+}
+
+.animationSVG {
+    position: absolute;
+    overflow: hidden !important;
+    width: 0;
+}
+
+.bg {
+    background: url(../img/bg.jpg) repeat 0 0;
+    background-repeat: no-repeat;
+    position: absolute;
+    overflow: hidden !important;
+    background-size: cover;
+    width: 100%;
+    height: 160px;
+    resize: both;
+    background-repeat: no-repeat;
+    background-position: center -30px;
+    height: 100vh !important;
+}
+
+.bg::before {
+    background-color: rgba(31, 31, 31, 0.205);
+    box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.582);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+.rec {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    stroke-dasharray: 1000, 100;
+    stroke-dashoffset: 50;
+    animation: rec-animation 100s linear infinite;
+}
+
+@keyframes rec-animation {
+    0%,
+    100% {
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dashoffset: 5000;
+        stroke-dasharray: 1000, 100;
+    }
+}
+
+.down-arrow {
+    fill: white;
+    opacity: 0.5;
+    width: 30px;
+    transform: translate(0, -20px);
+}
+
+.footer-learnmore {
+    cursor: pointer;
+}
+
+.inline-svg {
+    fill: white;
+    width: 1em;
+    max-height: 1em;
+    display: inline;
+    position: relative;
+    margin-right: 5px;
+}
+
+.inline-svg g {
+    fill: white;
+    max-width: 1em !important;
+    max-height: 1em !important;
+}
+
+
+/* dt {
+    vertical-align: middle;
+} */
+
+.txt-img {
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+
+/* .txt-img img {
+    width: 80%;
+    align-self: center;
+    object-fit: fill;
+    filter: grayscale(100%) brightness(80%);
+    border: #333 3px solid;
+}
+
+.txt-img {
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+} */
+
+
+/* .txt-img img {
+    width: 80%;
+    align-self: center;
+    object-fit: fill;
+    filter: grayscale(100%) brightness(80%);
+    border: #333 3px solid;
+} */
+
+.gallery {
+    width: 100%;
+    display: grid;
+    /* grid-template-columns: repeat(3, 33%);
+    grid-template-rows: repeat(3, 33%); */
+    grid-gap: 15px;
+}
+
+.gallery__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 500ms;
+    border: transparent solid 2px;
+    box-shadow: #0a0a0a50 5px 5px 5px;
+}
+
+.gallery__img img {
+    justify-self: center;
+    align-self: center;
+}
+
+.gallery__item--1 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.gallery__item--2 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.gallery__item--3 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.gallery__item--5 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
+.gallery__item--5 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
+.gallery__item--6 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
+.border-img {
+    padding: 10px;
+    background-color: white;
+}
+
+.gallery__img:hover {
+    transform: scale(1.01, 1.01);
+    border-color: var(--primary);
+    transition: 500ms;
+    box-shadow: #0a0a0aa1 7px 7px 7px;
+}
+
+div.a {
+    /* font-size: 1em; */
+    color: rgba(255, 255, 255, 0.062);
+    overflow: hidden;
+    padding: 5px;
+    text-align: center;
+    align-items: center;
+    position: absolute;
+    transition: 200ms;
+    cursor: pointer;
+}
+
+
+/* div.a:hover {
+    transition: 200ms;
+    color: black;
+    background-color: var(--primary);
+} */
+
+pre::-webkit-scrollbar {
+    height: 0.6em;
+}
+
+pre::-webkit-scrollbar-track {
+    background-color: #252525;
+}
+
+pre::-webkit-scrollbar-thumb {
+    transition: 500ms;
+    background-color: #c9c9c9;
+    border-radius: 5px;
+}
+
+pre::-webkit-scrollbar-thumb:hover {
+    transition: 500ms;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+
+/* ----------------------------------- Nav --------------------- */
+
+#projectcontainerwrapper {
+    background-color: #121213;
+    min-height: 100vh !important;
+    width: 100%;
+}
+
+.projects {
+    border-bottom-width: 0px !important;
+    padding-bottom: 0;
+}
+
+.projects-items .nav-item {
+    font-size: 1.2em;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+
+.projects-items .nav-item:hover {
+    color: white;
+    background-color: #121213;
+    opacity: 1;
+}
+
+.projects-items .active {
+    background-color: #121213;
+}
+
+.navbar {
+    background: none !important;
+    /* backdrop-filter: blur(2px); */
+    background-color: rgba(27, 26, 26, 0.514);
+    /* border-bottom: rgba(236, 236, 236, 0.014);
+    border-bottom-width: 4px;
+    border-bottom-style: solid; */
+}

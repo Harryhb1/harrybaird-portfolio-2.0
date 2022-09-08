@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Last updated 09/09/2022 -->
+
+<!-- Secret Cat
+                    _ |\_
+                   \` ..\
+              __,.-" =__Y=
+            ."        )
+      _    /   ,    \/\_
+     ((____|    )_-\ \_-`
+     `-----'`-----` `--`
+-->
+
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+
+    <!-- Bootstrap -->
+    <link href="bootstrap\bootstrap.css" rel="stylesheet">
+    <script src="bootstrap\bootstrap.js"></script>
+
+    <!-- Style Sheets -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Expletus+Sans:ital@1&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <!-- JavaScript -->
+    <script type="text/javascript" src="js/rellax.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/smoothstate.js"></script>
+
+
+    <title>Harry Baird - Portfolio</title>
+
+    <favicon></favicon>
+
+    <body>
+        <div class="col-md-5 p-lg-5 mx-auto">
+            <h1 style="text-align: center;">Harry Baird</h1>
+            <hr>
+            <h2 style="color: #dd6b48; text-align: center;">Portfolio</h2>
+            <!-- <svg width="100%" height="100%" class="rec" style="fill: none; stroke-width:2; z-index: -10;" stroke="white" viewBox="0 0 854.8 225.1" xml:space="preserve">
+                <polyline class="st0" points="352.9,0.5 104.1,0.5 0.8,224.6 750.7,224.6 854,0.5 526,0.5 	"/>
+            </svg> -->
+        </div>
+        <script>
+            var fontRandom = Math.random() * 200
+
+            $(document).ready(function() {
+                animateall()
+            });
+
+            function animateall() {
+                elements = $("#skillscontainer .a").toArray();
+                console.log(elements)
+                for (i = 0; i < elements.length; i++) {
+
+                    var x = $('#skillscontainer').height() - 50;
+                    var y = $('#skillscontainer').width() - 50;
+                    var offset = $('#skillscontainer').offset()
+
+                    var startx = Math.floor(Math.random() * x);
+                    var starty = offset.left + Math.floor(Math.random() * y);
+
+                    var random = Math.random() * 100
+                    $(elements[i]).css({
+                        fontSize: random,
+                        'filter': 'blur(' + random / 100 + 'px)',
+                        top: startx,
+                        left: starty,
+                    })
+                    setTimeout(animateDiv, Math.random() * 1000, elements[i]);
+                }
+            }
+
+
+            function makeNewPosition() {
+
+                // Get viewport dimensions (remove the dimension of the div)
+                var h = $('#skillscontainer').height() - 50;
+                var w = $('#skillscontainer').width() - 50;
+                var offset = $('#skillscontainer').offset()
+
+                var nh = Math.floor(Math.random() * h);
+                var nw = offset.left + Math.floor(Math.random() * w);
+
+                return [nh, nw];
+
+            }
+
+            function animateDiv(element) {
+                var newq = makeNewPosition();
+                var oldq = $(element).offset();
+                var speed = calcSpeed([oldq.top, oldq.left], newq);
+                var random = Math.random() * 100
+                    // console.log(fontsize)
+
+                $(element).animate({
+                    top: [newq[0], "linear"],
+                    left: [newq[1], "linear"],
+                    fontSize: random,
+                    'filter': 'blur(' + random / 100 + 'px)'
+                }, speed, function() {
+                    var random2 = Math.random() * 100
+                    $(element).css({
+                        fontSize: random2,
+                        'filter': 'blur(' + random2 / 100 + 'px)'
+                    })
+                    animateDiv(element);
+                });
+
+            };
+
+            function calcSpeed(prev, next) {
+                var x = Math.abs(prev[1] - next[1]);
+                var y = Math.abs(prev[0] - next[0]);
+                var greatest = x > y ? x : y;
+                var speedModifier = 0.02;
+                var speed = Math.ceil(greatest / speedModifier);
+                return speed;
+
+            }
+        </script>
+
+
+        <div class="position-relative overflow-hidden row txt-row">
+            <!-- Navigation  Bar -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3 projects">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+                <div class="navbar-collapse collapse w-100 order-3 dual-collapse2 justify-content-center text-white" style="z-index: 100;" id="navbarNavAltMarkup">
+                    <div class="navbar-nav projects-items" style="cursor: pointer;">
+                        <a class="nav-item nav-link cursor-pointer active" onclick="updateProjects(allProjects, '#projectcontainer')">Featured</a>
+                        <a class="nav-item nav-link cursor-pointer" onclick="updateProjects(webProjects, '#projectcontainer')">Web Development</a>
+                        <a class="nav-item nav-link cursor-pointer" onclick="updateProjects(gameProjects, '#projectcontainer')">Game Development</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="position-relative" id="projectcontainerwrapper">
+            <div class="position-relative overflow-hidden px-3 row txt-row" id="projectcontainer">
+
+            </div>
+            <div id="otherprojectcontainer">
+
+            </div>
+        </div>
+
+        <script>
+            easysurvey = "portfolio/easysurvey/info.html"
+            gmtk2020 = "portfolio/gmtk2020/info.html"
+            ia3 = "portfolio/ia3/info.html"
+            planet_gen = "portfolio/planet_gen/info.html"
+
+            allProjects = [easysurvey, gmtk2020, ia3, planet_gen]
+            webProjects = [easysurvey, ia3]
+            gameProjects = [gmtk2020, planet_gen]
+
+            other = ["portfolio/other/info.html"]
+
+            updateProjects(allProjects, '#projectcontainer')
+            updateProjects(other, '#otherprojectcontainer')
+
+            function updateProjects(array, container) {
+                $(container).animate({
+                    opacity: 0,
+                    right: -10,
+                }, 500, function() {
+                    $(container).empty()
+                    for (i = 0; i < array.length; i++) {
+                        jQuery.ajaxSetup({
+                            async: false
+                        }); //if order matters
+                        $.get(array[i], '', function(data) {
+                            $(container).append(data).animate({
+                                opacity: 1,
+                                right: +10,
+                            }, 500);
+                        });
+                        jQuery.ajaxSetup({
+                            async: true
+                        }); //if order matters
+                    }
+                });
+            }
+        </script>
+
+        </div>
+    </body>
+
+</html>
